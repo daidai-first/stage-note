@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stage Note - チケット管理</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<h1>Stage Note</h1>
+<p>チケット管理</p>
+
+
+<button onclick="location.href='index.html'">🏠 ホームへ戻る</button>
+
+
+<hr>
+
+
+<label for="ticketTitle">公演名</label><br>
+<input type="text" id="ticketTitle"><br><br>
+
+
+<label for="ticketDate">公演日</label><br>
+<input type="date" id="ticketDate"><br><br>
+
+
+<label for="ticketTime">公演時間</label><br>
+<input type="time" id="ticketTime"><br><br>
+
+
+<label for="ticketTheater">会場</label><br>
+<input type="text" id="ticketTheater"><br><br>
+
+
+<label for="ticketType">チケット種別</label><br>
+<select id="ticketType">
+    <option>紙</option>
+    <option>電子</option>
+    <option>その他</option>
+</select><br><br>
+
+
+<label for="ticketResult">当落</label><br>
+<select id="ticketResult">
+    <option>申込前</option>
+    <option>申込中</option>
+    <option>当選</option>
+    <option>落選</option>
+</select><br><br>
+
+
+<label for="ticketIssue">受取・発券状況</label><br>
+<select id="ticketIssue">
+    <option>未受取（未発券・未着）</option>
+    <option>当日受取（当日発券）</option>
+    <option>受取済（発券済・到着済）</option>
+</select><br><br>
+
+
+<label for="ticketPlace">購入場所</label><br>
+<input type="text" id="ticketPlace"><br><br>
+
+
+<label for="ticketCount">枚数</label><br>
+<input type="number" id="ticketCount" min="1"><br><br>
+
+<label for="ticketPrice">チケット代（1枚）</label><br>
+<input type="number" id="ticketPrice" min="0"><br><br>
+
+<label for="ticketFee">手数料</label><br>
+<input type="number" id="ticketFee" min="0"><br><br>
+
+<label for="ticketOther">その他</label><br>
+<input type="number" id="ticketOther" min="0"><br><br>
+
+<label for="ticketTotal">支払総額</label><br>
+<input
+    type="text"
+    id="ticketTotal"
+    readonly
+><br><br>
+
+
+<label for="ticketMemo">備考</label><br>
+<textarea id="ticketMemo" rows="5"></textarea><br><br>
+
+
+<p id="editMessage" style="display: none; color: red; font-weight: bold;">
+    📝 編集中
+</p>
+
+
+<button id="ticketSaveButton">保存</button>
+
+
+<hr>
+
+
+<h2>チケット一覧</h2>
+
+<div class="searchArea">
+
+    <input
+        type="text"
+        id="ticketSearch"
+        placeholder="公演名・劇場名・購入場所で検索">
+
+    <button id="ticketClearButton" style="display: none;">
+        ❌
+    </button>
+
+</div>
+
+
+<div id="ticketList"></div>
+
+
+<script src="ticket.js"></script>
+
+
+</body>
+</html>

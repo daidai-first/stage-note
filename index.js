@@ -215,4 +215,52 @@ if (dashboardTotalCost) {
     dashboardTotalCost.textContent =
         (expenseTotal + ticketTotal).toLocaleString() + "円";
 
+        displayRecentRecords();
+
+}
+
+function displayRecentRecords() {
+
+    const recentRecords = document.getElementById("recentRecords");
+
+    if (!recentRecords) return;
+
+    const records =
+        JSON.parse(localStorage.getItem("records")) || [];
+
+    recentRecords.innerHTML = "";
+
+    if (records.length === 0) {
+
+        recentRecords.innerHTML =
+            "<p>まだ鑑賞記録がありません。</p>";
+
+        return;
+
+    }
+
+    records.sort(function (a, b) {
+
+        const dateTimeA = new Date(a.date + "T" + (a.time || "00:00"));
+        const dateTimeB = new Date(b.date + "T" + (b.time || "00:00"));
+
+        return dateTimeB - dateTimeA;
+
+    });
+
+    records.slice(0, 3).forEach(function (record) {
+
+        recentRecords.innerHTML += `
+            <div class="recentRecord">
+
+                <h3>🎭 ${record.title}</h3>
+                <p>📅 ${record.date}</p>
+                <p>🏛 ${record.theater}</p>
+
+            </div>
+
+        `;
+
+    });
+
 }

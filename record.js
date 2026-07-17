@@ -77,7 +77,7 @@ if (editingRecordId === null) {
 
 localStorage.setItem("records", JSON.stringify(records));
 
-console.log("観劇記録を保存しました！");
+console.log("鑑賞記録を保存しました！");
 
 editingRecordId = null;
 
@@ -158,9 +158,9 @@ function displayRecords() {
 
 <h3>${record.title}</h3>
 
-<p>観劇日：${record.date}</p>
+<p>鑑賞日：${record.date}</p>
 <p>開演時間：${record.time}</p>
-<p>劇場：${record.theater}</p>
+<p>会場：${record.theater}</p>
 <p>座席：${record.seat}</p>
 <p>出演者：${record.cast}</p>
 <p>同行者：${record.companion}</p>

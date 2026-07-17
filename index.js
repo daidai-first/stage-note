@@ -142,14 +142,47 @@ if (ticketCount) {
 
     const today = new Date();
 
-    const count = tickets.filter(function (ticket) {
+    today.setHours(0, 0, 0, 0);
 
-        return ticket.result === "当選"
-            && new Date(ticket.date) >= today;
+    const winningTickets = tickets.filter(function (ticket) {
 
-    }).length;
+        return (
+            ticket.result === "当選" &&
+            new Date(ticket.date) >= today
+        );
 
-    ticketCount.textContent = count + "枚";
+    });
+
+    ticketCount.textContent = winningTickets.length + "枚";
+
+    winningTickets.sort(function (a, b) {
+
+        const dateA = new Date(a.date + "T" + (a.time || "00:00"));
+        const dateB = new Date(b.date + "T" + (b.time || "00:00"));
+
+        return dateA - dateB;
+
+    });
+
+    const nextTicketTitle = document.getElementById("nextTicketTitle");
+    const nextTicketDate = document.getElementById("nextTicketDate");
+    const nextTicketTheater = document.getElementById("nextTicketTheater");
+
+    if (winningTickets.length > 0) {
+
+        const next = winningTickets[0];
+
+        nextTicketTitle.textContent = "🎭 " + next.title;
+        nextTicketDate.textContent = "📅 " + next.date + " " + next.time;
+        nextTicketTheater.textContent = "🏛 " + next.theater;
+
+    } else {
+
+        nextTicketTitle.textContent = "予定なし";
+        nextTicketDate.textContent = "";
+        nextTicketTheater.textContent = "";
+
+    }
 
 }
 

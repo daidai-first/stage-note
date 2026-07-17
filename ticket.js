@@ -189,8 +189,8 @@ const filteredTickets = tickets.filter(function (ticket) {
     div.innerHTML=`
 <hr>
 <h3>${ticket.title}</h3>
-<p>公演日：${ticket.date}</p>
-<p>公演時間：${ticket.time}</p>
+<p>鑑賞日：${ticket.date}</p>
+<p>開演時間：${ticket.time}</p>
 <p>会場：${ticket.theater}</p>
 <p>チケット種別：${ticket.type}</p>
 <p>当落：${ticket.result}</p>

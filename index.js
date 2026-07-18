@@ -167,6 +167,8 @@ if (ticketCount) {
     const nextTicketTitle = document.getElementById("nextTicketTitle");
     const nextTicketDate = document.getElementById("nextTicketDate");
     const nextTicketTheater = document.getElementById("nextTicketTheater");
+    const nextTicketCountdown =
+    document.getElementById("nextTicketCountdown");
 
     if (winningTickets.length > 0) {
 
@@ -175,12 +177,39 @@ if (ticketCount) {
         nextTicketTitle.textContent = "🎭 " + next.title;
         nextTicketDate.textContent = "📅 " + next.date + " " + next.time;
         nextTicketTheater.textContent = "🏛 " + next.theater;
+        const targetDate = new Date(next.date);
+
+targetDate.setHours(0, 0, 0, 0);
+
+const todayDate = new Date();
+
+todayDate.setHours(0, 0, 0, 0);
+
+const diffDays = Math.floor(
+    (targetDate - todayDate) / (1000 * 60 * 60 * 24)
+);
+
+if (diffDays === 0) {
+
+    nextTicketCountdown.textContent = "🔴 今日！";
+
+} else if (diffDays === 1) {
+
+    nextTicketCountdown.textContent = "🟠 明日！";
+
+} else {
+
+    nextTicketCountdown.textContent =
+        "⏳ あと" + diffDays + "日";
+
+}
 
     } else {
 
         nextTicketTitle.textContent = "予定なし";
         nextTicketDate.textContent = "";
         nextTicketTheater.textContent = "";
+        nextTicketCountdown.textContent = "";
 
     }
 

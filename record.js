@@ -28,7 +28,17 @@ if (recordSaveButton) {
             date: document.getElementById("recordDate").value,
             time: document.getElementById("recordTime").value,
             theater: document.getElementById("recordTheater").value,
-            seat: document.getElementById("recordSeat").value,
+            seatType: document.getElementById("recordSeatType").value,
+
+seatTypeOther: document.getElementById("recordSeatTypeOther").value,
+
+seatFloor: document.getElementById("recordSeatFloor").value,
+
+seatFloorOther: document.getElementById("recordSeatFloorOther").value,
+
+seatRow: document.getElementById("recordSeatRow").value,
+
+seatNumber: document.getElementById("recordSeatNumber").value,
             cast: document.getElementById("recordCast").value,
             companion: document.getElementById("recordCompanion").value,
             rate: document.getElementById("recordRate").value,
@@ -101,7 +111,17 @@ function clearRecordForm() {
     document.getElementById("recordDate").value = "";
     document.getElementById("recordTime").value = "";
     document.getElementById("recordTheater").value = "";
-    document.getElementById("recordSeat").value = "";
+    document.getElementById("recordSeatType").selectedIndex = 0;
+document.getElementById("recordSeatTypeOther").value = "";
+
+document.getElementById("recordSeatFloor").selectedIndex = 0;
+document.getElementById("recordSeatFloorOther").value = "";
+
+document.getElementById("recordSeatRow").value = "";
+document.getElementById("recordSeatNumber").value = "";
+
+document.getElementById("recordSeatTypeOther").style.display = "none";
+document.getElementById("recordSeatFloorOther").style.display = "none";
     document.getElementById("recordCast").value = "";
     document.getElementById("recordCompanion").value = "";
     document.getElementById("recordRate").selectedIndex = 0;
@@ -161,7 +181,25 @@ function displayRecords() {
 <p>鑑賞日：${record.date}</p>
 <p>開演時間：${record.time}</p>
 <p>会場：${record.theater}</p>
-<p>座席：${record.seat}</p>
+<p>座席：${
+    (
+        (record.seatType === "その他"
+            ? record.seatTypeOther
+            : record.seatType || "") + " " +
+
+        (record.seatFloor === "その他"
+            ? record.seatFloorOther
+            : record.seatFloor || "") +
+
+        (record.seatRow
+            ? record.seatRow + "列"
+            : "") +
+
+        (record.seatNumber
+            ? record.seatNumber + "番"
+            : "")
+    ).trim()
+}</p>
 <p>出演者：${record.cast}</p>
 <p>同行者：${record.companion}</p>
 <p>評価：${record.rate}</p>
@@ -198,7 +236,25 @@ recordEditButtons.forEach(function (button) {
         document.getElementById("recordDate").value = record.date;
         document.getElementById("recordTime").value = record.time;
         document.getElementById("recordTheater").value = record.theater;
-        document.getElementById("recordSeat").value = record.seat;
+        document.getElementById("recordSeatType").value = record.seatType || "";
+
+document.getElementById("recordSeatTypeOther").value = record.seatTypeOther || "";
+
+document.getElementById("recordSeatFloor").value = record.seatFloor || "";
+
+document.getElementById("recordSeatFloorOther").value = record.seatFloorOther || "";
+
+document.getElementById("recordSeatRow").value = record.seatRow || "";
+
+document.getElementById("recordSeatNumber").value = record.seatNumber || "";
+
+if (record.seatType === "その他") {
+    document.getElementById("recordSeatTypeOther").style.display = "block";
+}
+
+if (record.seatFloor === "その他") {
+    document.getElementById("recordSeatFloorOther").style.display = "block";
+}
         document.getElementById("recordCast").value = record.cast;
         document.getElementById("recordCompanion").value = record.companion;
         document.getElementById("recordRate").value = record.rate;
@@ -284,6 +340,59 @@ if (recordSearch) {
     displayRecords();
 
 });
+
+}
+
+// ==========================
+// 席種「その他」表示切替
+// ==========================
+
+const recordSeatType = document.getElementById("recordSeatType");
+const recordSeatTypeOther = document.getElementById("recordSeatTypeOther");
+
+if (recordSeatType) {
+
+    recordSeatType.addEventListener("change", function () {
+
+        if (recordSeatType.value === "その他") {
+
+            recordSeatTypeOther.style.display = "block";
+
+        } else {
+
+            recordSeatTypeOther.style.display = "none";
+            recordSeatTypeOther.value = "";
+
+        }
+
+    });
+
+}
+
+
+// ==========================
+// 階「その他」表示切替
+// ==========================
+
+const recordSeatFloor = document.getElementById("recordSeatFloor");
+const recordSeatFloorOther = document.getElementById("recordSeatFloorOther");
+
+if (recordSeatFloor) {
+
+    recordSeatFloor.addEventListener("change", function () {
+
+        if (recordSeatFloor.value === "その他") {
+
+            recordSeatFloorOther.style.display = "block";
+
+        } else {
+
+            recordSeatFloorOther.style.display = "none";
+            recordSeatFloorOther.value = "";
+
+        }
+
+    });
 
 }
 

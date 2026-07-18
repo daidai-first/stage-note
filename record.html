@@ -59,11 +59,77 @@
 
 <br><br>
 
-<label for="recordSeat">座席</label><br>
+<label for="recordSeatType">席種</label><br>
+
+<select id="recordSeatType">
+
+    <option value="">選択してください</option>
+    <option value="SS席">SS席</option>
+    <option value="S席">S席</option>
+    <option value="A席">A席</option>
+    <option value="B席">B席</option>
+    <option value="C席">C席</option>
+    <option value="桟敷席">桟敷席</option>
+    <option value="ボックス席">ボックス席</option>
+    <option value="立見">立見</option>
+    <option value="車椅子席">車椅子席</option>
+    <option value="その他">その他</option>
+
+</select>
+
+<br><br>
+
 <input
     type="text"
-    id="recordSeat"
-    placeholder="例：S席 1-12-24"
+    id="recordSeatTypeOther"
+    placeholder="席種を入力"
+    style="display:none;"
+>
+
+<br><br>
+
+<label for="recordSeatFloor">階</label><br>
+
+<select id="recordSeatFloor">
+
+    <option value="">選択してください</option>
+    <option value="地下">地下</option>
+    <option value="1階">1階</option>
+    <option value="2階">2階</option>
+    <option value="3階">3階</option>
+    <option value="4階">4階</option>
+    <option value="5階">5階</option>
+    <option value="その他">その他</option>
+
+</select>
+
+<br><br>
+
+<input
+    type="text"
+    id="recordSeatFloorOther"
+    placeholder="階を入力"
+    style="display:none;"
+>
+
+<br><br>
+
+<label for="recordSeatRow">列</label><br>
+
+<input
+    type="text"
+    id="recordSeatRow"
+    placeholder="例：12 または A"
+>
+
+<br><br>
+
+<label for="recordSeatNumber">番</label><br>
+
+<input
+    type="text"
+    id="recordSeatNumber"
+    placeholder="例：24"
 ><br><br>
 
 <label for="recordCast">出演者</label><br>

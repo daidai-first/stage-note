@@ -209,6 +209,8 @@ filteredExpenses.forEach(function (expense) {
 
     <p>合計金額：${expense.total.toLocaleString()}円</p>
 
+    <p>メモ：${expense.memo}</p>
+
     <br>
 
 <button

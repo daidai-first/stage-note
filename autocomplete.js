@@ -147,6 +147,18 @@ const autocompleteSettings = [
     },
 
     {
+    input: "recordSeatTypeOther",
+    suggestions: "recordSeatTypeOtherSuggestions",
+    storage: "autocompleteSeatTypes"
+    },
+
+    {
+    input: "recordSeatFloorOther",
+    suggestions: "recordSeatFloorOtherSuggestions",
+    storage: "autocompleteSeatFloors"
+    },
+
+    {
     input: "ticketTheater",
     suggestions: "ticketTheaterSuggestions",
     storage: "autocompleteTheaters"

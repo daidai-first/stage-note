@@ -65,6 +65,16 @@ saveAutocompleteItem(
     record.companion
 );
 
+saveAutocompleteItem(
+    "autocompleteSeatTypes",
+    record.seatTypeOther
+);
+
+saveAutocompleteItem(
+    "autocompleteSeatFloors",
+    record.seatFloorOther
+);
+
 let records = JSON.parse(localStorage.getItem("records")) || [];
 
 if (editingRecordId === null) {
@@ -250,10 +260,12 @@ document.getElementById("recordSeatNumber").value = record.seatNumber || "";
 
 if (record.seatType === "その他") {
     document.getElementById("recordSeatTypeOther").style.display = "block";
+    document.getElementById("recordSeatTypeOther").focus();
 }
 
 if (record.seatFloor === "その他") {
     document.getElementById("recordSeatFloorOther").style.display = "block";
+    document.getElementById("recordSeatFloorOther").focus();
 }
         document.getElementById("recordCast").value = record.cast;
         document.getElementById("recordCompanion").value = record.companion;
@@ -356,14 +368,15 @@ if (recordSeatType) {
 
         if (recordSeatType.value === "その他") {
 
-            recordSeatTypeOther.style.display = "block";
+    recordSeatTypeOther.style.display = "block";
+    recordSeatTypeOther.focus();
 
-        } else {
+} else {
 
-            recordSeatTypeOther.style.display = "none";
-            recordSeatTypeOther.value = "";
+    recordSeatTypeOther.style.display = "none";
+    recordSeatTypeOther.value = "";
 
-        }
+}
 
     });
 
@@ -383,14 +396,15 @@ if (recordSeatFloor) {
 
         if (recordSeatFloor.value === "その他") {
 
-            recordSeatFloorOther.style.display = "block";
+    recordSeatFloorOther.style.display = "block";
+    recordSeatFloorOther.focus();
 
-        } else {
+} else {
 
-            recordSeatFloorOther.style.display = "none";
-            recordSeatFloorOther.value = "";
+    recordSeatFloorOther.style.display = "none";
+    recordSeatFloorOther.value = "";
 
-        }
+}
 
     });
 

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stage Note - 遠征費管理</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Stage Note</h1>
+<p>遠征費管理</p>
+
+<button onclick="location.href='index.html'">🏠 ホームへ戻る</button>
+
+<hr>
+
+<label for="expeditionTitle">遠征名</label><br>
+
+<div class="autocompleteBox">
+
+    <input
+        type="text"
+        id="expeditionTitle"
+        autocomplete="off"
+    >
+
+    <div
+        id="expeditionTitleSuggestions"
+        class="autocompleteSuggestions">
+    </div>
+
+</div>
+
+<br><br>
+
+<label for="expeditionStartDate">開始日</label><br>
+<input type="date" id="expeditionStartDate"><br><br>
+
+<label for="expeditionEndDate">終了日</label><br>
+<input type="date" id="expeditionEndDate"><br><br>
+
+<label for="expeditionDestination">目的地</label><br>
+
+<div class="autocompleteBox">
+
+    <input
+        type="text"
+        id="expeditionDestination"
+        autocomplete="off"
+    >
+
+    <div
+        id="expeditionDestinationSuggestions"
+        class="autocompleteSuggestions">
+    </div>
+
+</div>
+
+<br><br>
+
+<label for="expeditionTransportation">交通費</label><br>
+<input type="number" id="expeditionTransportation"><br><br>
+
+<label for="expeditionHotel">宿泊費</label><br>
+<input type="number" id="expeditionHotel"><br><br>
+
+<label for="expeditionFood">食費</label><br>
+<input type="number" id="expeditionFood"><br><br>
+
+<label for="expeditionGoods">グッズ代</label><br>
+<input type="number" id="expeditionGoods"><br><br>
+
+<label for="expeditionOther">その他</label><br>
+<input type="number" id="expeditionOther"><br><br>
+
+<label>遠征合計</label><br>
+
+<input
+    type="text"
+    id="expeditionTotal"
+    readonly
+    value="0円"
+><br><br>
+
+<label for="expeditionMemo">メモ</label><br>
+<textarea id="expeditionMemo" rows="5"></textarea><br><br>
+
+<button id="expeditionSaveButton">保存</button>
+
+<hr>
+
+<h2>遠征一覧</h2>
+
+<input
+    type="text"
+    id="expeditionSearch"
+    placeholder="遠征名・目的地で検索"
+>
+
+<button
+    id="expeditionClearButton"
+    type="button"
+>
+    ❌
+</button>
+
+<br><br>
+
+<div id="expeditionList"></div>
+
+<script src="autocomplete.js"></script>
+<script src="expedition.js"></script>
+
+</body>
+</html>

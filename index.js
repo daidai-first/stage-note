@@ -215,22 +215,22 @@ if (diffDays === 0) {
 
 }
 
-const expenseCount = document.getElementById("expenseCount");
+const expeditionCount = document.getElementById("expeditionCount");
 
-if (expenseCount) {
+if (expeditionCount) {
 
-    const expenses =
-        JSON.parse(localStorage.getItem("expenses")) || [];
+    const expeditions =
+        JSON.parse(localStorage.getItem("expeditions")) || [];
 
     const thisYear = new Date().getFullYear();
 
-    const count = expenses.filter(function (expense) {
+    const count = expeditions.filter(function (expedition) {
 
-        return new Date(expense.startDate).getFullYear() === thisYear;
+        return new Date(expedition.startDate).getFullYear() === thisYear;
 
     }).length;
 
-    expenseCount.textContent = count + "回";
+    expeditionCount.textContent = count + "回";
 
 }
 
@@ -239,23 +239,23 @@ const dashboardTotalCost =
 
 if (dashboardTotalCost) {
 
-    const expenses =
-        JSON.parse(localStorage.getItem("expenses")) || [];
+    const expeditions =
+        JSON.parse(localStorage.getItem("expeditions")) || [];
 
     const tickets =
         JSON.parse(localStorage.getItem("tickets")) || [];
 
     const thisYear = new Date().getFullYear();
 
-    const expenseTotal = expenses
-        .filter(function (expense) {
+    const expeditionTotal = expeditions
+        .filter(function (expedition) {
 
-            return new Date(expense.startDate).getFullYear() === thisYear;
+            return new Date(expedition.startDate).getFullYear() === thisYear;
 
         })
-        .reduce(function (sum, expense) {
+        .reduce(function (sum, expedition) {
 
-            return sum + expense.total;
+            return sum + expedition.total;
 
         }, 0);
 
@@ -275,7 +275,7 @@ if (dashboardTotalCost) {
         }, 0);
 
     dashboardTotalCost.textContent =
-        (expenseTotal + ticketTotal).toLocaleString() + "円";
+        (expeditionTotal + ticketTotal).toLocaleString() + "円";
 
         displayRecentRecords();
 
@@ -310,7 +310,7 @@ function displayRecentRecords() {
 
     });
 
-    records.slice(0, 3).forEach(function (record) {
+    records.slice(0, 1).forEach(function (record) {
 
         recentRecords.innerHTML += `
             <div class="recentRecord">

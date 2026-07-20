@@ -171,14 +171,14 @@ const autocompleteSettings = [
     },
 
     {
-    input: "expenseTitle",
-    suggestions: "expenseTitleSuggestions",
-    storage: "autocompleteExpenseTitles"
+    input: "expeditionTitle",
+    suggestions: "expeditionTitleSuggestions",
+    storage: "autocompleteExpeditionTitles"
     },
 
     {
-    input: "expenseDestination",
-    suggestions: "expenseDestinationSuggestions",
+    input: "expeditionDestination",
+    suggestions: "expeditionDestinationSuggestions",
     storage: "autocompleteDestinations"
     }
 

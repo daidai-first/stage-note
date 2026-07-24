@@ -23,7 +23,7 @@
 <input
     type="text"
     id="seatSearch"
-    placeholder="公演名・会場"
+    placeholder="公演名・会場・席種で検索"
 >
 
 <button id="seatClearButton">
@@ -33,6 +33,22 @@
 <hr>
 
 <h2>会場一覧</h2>
+
+<label for="seatSort">並び替え</label><br>
+
+<select id="seatSort">
+
+    <option value="new">観劇日（新しい順）</option>
+
+    <option value="old">観劇日（古い順）</option>
+
+    <option value="title">公演名順</option>
+
+    <option value="theater">劇場順</option>
+
+</select>
+
+<br><br>
 
 <div id="seatList">
 

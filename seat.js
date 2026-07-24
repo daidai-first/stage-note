@@ -18,22 +18,55 @@ function displaySeats() {
     .value
     .toLowerCase();
 
-    records.sort(function (a, b) {
+    const seatSort =
+    document.getElementById("seatSort").value;
 
-        const dateTimeA = new Date(a.date + "T" + (a.time || "00:00"));
-        const dateTimeB = new Date(b.date + "T" + (b.time || "00:00"));
+records.sort(function (a, b) {
 
-        return dateTimeB - dateTimeA;
+    if (seatSort === "new") {
 
-    });
+        return new Date(b.date + "T" + (b.time || "00:00"))
+             - new Date(a.date + "T" + (a.time || "00:00"));
+
+    }
+
+    if (seatSort === "old") {
+
+        return new Date(a.date + "T" + (a.time || "00:00"))
+             - new Date(b.date + "T" + (b.time || "00:00"));
+
+    }
+
+    if (seatSort === "title") {
+
+        return a.title.localeCompare(b.title);
+
+    }
+
+    if (seatSort === "theater") {
+
+        return a.theater.localeCompare(b.theater);
+
+    }
+
+    return 0;
+
+});
 
     const filteredRecords = records.filter(function(record){
+
+    const seatType =
+        record.seatType === "その他"
+            ? record.seatTypeOther
+            : record.seatType || "";
 
     return (
 
         record.title.toLowerCase().includes(searchWord) ||
 
-        record.theater.toLowerCase().includes(searchWord)
+        record.theater.toLowerCase().includes(searchWord) ||
+
+        seatType.toLowerCase().includes(searchWord)
 
     );
 
@@ -88,6 +121,19 @@ if (seatSearch) {
     displaySeats();
 
 });
+}
+
+const seatSort =
+    document.getElementById("seatSort");
+
+if (seatSort) {
+
+    seatSort.addEventListener("change", function () {
+
+        displaySeats();
+
+    });
+
 }
 
 const seatClearButton = document.getElementById("seatClearButton");
